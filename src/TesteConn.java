@@ -5,7 +5,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
+//teste de commit
 public class TesteConn {
 
 	public static void main(String[] args)
