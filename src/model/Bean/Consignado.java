@@ -62,10 +62,10 @@ public void setConta(String conta) {
 	this.conta = conta;
 }
 
-public double consultar(Consignado consig) throws Exception {
+public boolean consultar(Consignado consig) throws Exception {
 
     ConsignadoDAO consigDao = new ConsignadoDAO();
-    double resposta = consigDao.consultar(consig);
+    boolean resposta = consigDao.consultar(consig);
     return resposta;
 }
 

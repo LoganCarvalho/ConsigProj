@@ -9,11 +9,11 @@ import model.Bean.Consignado;
 
 public class ConsignadoDAO {
 	
-	 public double consultar(Consignado consig) throws Exception {
+	 public boolean consultar(Consignado consig) throws Exception {
 
 	        Connection conexao = ConnectionFactory.getConnection();
 	        ResultSet resposta = null;
-	        double ok;
+	        boolean ok = false;
 	        StringBuilder sql = new StringBuilder();
 
 	        try {
@@ -25,13 +25,10 @@ public class ConsignadoDAO {
 	            
 	            resposta = stmt.executeQuery();
 	            while (resposta.next()) { 
-	                aluno.setMatricula(Integer.parseInt(resposta.getString("matricula_aluno")));
-	                aluno.setNome(resposta.getString("nome_aluno"));
-	                aluno.setSaldo(Integer.parseInt(resposta.getString("saldo_aluno")));
-	                aluno.setTurma(resposta.getString("turma_aluno"));
-	                aluno.setTurno(resposta.getString("turno_aluno"));
+	                
+	                consig.setMargem(Integer.parseInt(resposta.getString("margem_consignado"))); //o campo em azul dever ser o valor do consigando que vem da query
 	                   
-	                //ok =; //valor double;
+	                ok = true;
 	            }
 	        } catch (SQLException error) {
 	            System.out.println(error.getMessage());
