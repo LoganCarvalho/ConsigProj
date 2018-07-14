@@ -17,16 +17,16 @@ public class ConsignadoDAO {
 	        StringBuilder sql = new StringBuilder();
 
 	        try {
-	            sql.append("select * tabelaConsignado");
-	            sql.append(" where matricula_aluno = ?");
+	            sql.append("select margem from v_consignado");
+	            sql.append(" where CPF = ?");
 	            PreparedStatement stmt = conexao.prepareStatement(sql.toString());
 	            stmt.setString(1, consig.getCpf());
 	           
 	            
-	            resposta = stmt.executeQuery();
+	            resposta = stmt.executeQuery(); //o resultado da query fica armazenado nessa variável
 	            while (resposta.next()) { 
 	                
-	                consig.setMargem(Integer.parseInt(resposta.getString("margem_consignado"))); //o campo em azul dever ser o valor do consigando que vem da query
+	                consig.setMargem(Double.parseDouble(resposta.getString("margem"))); //o campo em azul dever ser o nome do campo que está na tebala do banco
 	                   
 	                ok = true;
 	            }
